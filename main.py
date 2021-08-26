@@ -28,7 +28,6 @@ passengers["SecondClass"] = passengers.Pclass.apply(lambda x: 1 if x ==2 else 0)
 #print(passengers)
 # Select the desired features
 features = passengers[["Sex","Age","FirstClass","SecondClass"]]
-plt.plot(features)
 survival = passengers["Survived"]
 
 # Perform train, test, split
@@ -53,21 +52,6 @@ print(model.score(test_features,test_labels))
 # Analyze the coefficients
 print(list(zip(['Sex','Age','FirstClass','SecondClass'],model.coef_[0])))
 
-# Sample passenger features
-Jack = np.array([0.0,20.0,0.0,0.0])
-Rose = np.array([1.0,17.0,1.0,0.0])
-You = np.array([0.0,18.0,0,1])
-
-# Combine passenger arrays
-sample_passengers = np.array([Jack,Rose,You])
-
-# Scale the sample passenger features
-sample_passengers = scaler.transform(sample_passengers)
-
-
-# Make survival predictions!
-#print(model.predict(sample_passengers))
-#print(model.predict_proba(sample_passengers))
 
 """
 # Would you survive being on the Titanic?
