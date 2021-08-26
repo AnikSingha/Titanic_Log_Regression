@@ -13,7 +13,6 @@ passengers = pd.read_csv("passengers.csv")
 
 # Update sex column to numerical
 passengers.Sex = passengers["Sex"].map({"male": 0, "female": 1})
-#print(passengers)
 
 # Fill the nan values in the age column
 passengers["Age"].fillna(value = np.mean(passengers.Age), inplace = True)
@@ -23,10 +22,8 @@ passengers["FirstClass"] = passengers.Pclass.apply(lambda x: 1 if x ==1 else 0)
 
 # Create a second class column
 
-
 passengers["SecondClass"] = passengers.Pclass.apply(lambda x: 1 if x ==2 else 0)
-#print(passengers)
-# Select the desired features
+
 features = passengers[["Sex","Age","FirstClass","SecondClass"]]
 survival = passengers["Survived"]
 
@@ -51,7 +48,6 @@ print(model.score(test_features,test_labels))
 
 # Analyze the coefficients
 print(list(zip(['Sex','Age','FirstClass','SecondClass'],model.coef_[0])))
-
 
 """
 # Would you survive being on the Titanic?
